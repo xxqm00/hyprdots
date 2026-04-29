@@ -1,0 +1,264 @@
+/* =========================
+   Global Settings
+   ========================= */
+* {
+        font-family: "JetBrainsMono Nerd Font","Font Awesome", "Font Awesome 7 Free", "Font Awesome 7 Brands";
+    font-size: 15px;
+    font-weight: 700;
+}
+
+/* =========================
+   Waybar Base
+   ========================= */
+window#waybar,
+window#waybar.bottombar {
+    background-color: transparent;
+        /* border-radius: 5px; */
+    padding: 5px;
+    /* background-color: rgba(10, 10, 10, 0.98); */
+    transition: background-color 0.5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/* Bottom bar specific tweaks */
+window#waybar.bottombar {
+    background-color: transparent;
+}
+
+/* Hide unused sections on bottom / top bar */
+window#waybar.bottombar .modules-center, 
+window#waybar.bottombar .modules-left, 
+window#waybar.bottombar .modules-right {
+    background-color: transparent;
+    border: transparent;
+
+}
+
+/* =========================
+   Module Containers
+   ========================= */
+.modules-left,
+.modules-center,
+.modules-right {
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: 2px;
+    border-radius: 10px;
+    padding: 3px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    background-color: #0e0e0e;
+}
+
+/* =========================
+   Buttons / Interactions
+   ========================= */
+button {
+    margin-left: 2px;
+    margin-right: 2px;
+    border: 1px solid #0b0b0b;
+}
+
+button:hover {
+        background-color: #212121;
+
+    /* box-shadow: 0 -3px transparent; */
+}
+
+/* =========================
+   Workspaces
+   ========================= */
+#workspaces {
+    background: transparent;
+    border-radius: 5px;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background: rgba(19, 19, 19, 0.6);
+    border-radius: 5px;
+}
+
+#workspaces button.active {
+    background-color: #1b1b1b;
+    border-color: #191919;
+    animation: darken 0.5s steps(9) infinite alternate;
+}
+
+#workspaces button.urgent {
+    color: red;
+}
+
+/* Remove extra spacing at edges */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#taskbar button {
+    padding: 0 5px;
+    border-bottom: 3px solid transparent;
+}
+
+#taskbar button.active {
+    background-color: rgba(139, 139, 139, 0.1);
+        border-radius: 5px;
+
+}
+
+#taskbar button:hover {
+    background-color: rgba(200, 200, 200, 0.1);
+    border-radius: 5px;
+}
+
+
+/* =========================
+   Shared Module Styling
+   ========================= */
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#mpd,
+#clock,
+#custom-spotify,
+#custom-power,
+#window,
+#taskbar,
+#power-profiles-daemon {
+    background-color: #171717;
+    border: 2px solid rgba(27, 27, 27, 0.7);
+    border-radius: 5px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin: 1px;
+}
+#workspaces{
+    border-color: transparent;
+}
+#tray{
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-left: 3px;
+    padding-right: 3px;
+    background-color: rgba(36, 36, 36, 0.6);
+    border: 2px solid rgba(27, 27, 27, 0.7);
+    border-radius: 5px;
+}
+
+/* =========================
+   Battery
+   ========================= */
+/* #battery {
+    margin-right: 5px;
+} */
+
+#battery.charging,
+#battery.plugged {
+    animation: chargePlug 0.5s steps(10) 2 alternate;
+}
+
+#battery.critical:not(.charging) {
+    animation: blink 0.5s steps(12) infinite alternate;
+}
+
+/* =========================
+   Power Profiles
+   ========================= */
+#power-profiles-daemon.performance,
+#power-profiles-daemon.balanced,
+#power-profiles-daemon.power-saver {
+    color: #ffffff;
+}
+
+/* =========================
+   Tray
+   ========================= */
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+/* =========================
+   Idle Inhibitor
+   ========================= */
+#idle_inhibitor.activated {
+    color: #ffffff;
+}
+
+/* =========================
+   MPD
+   ========================= */
+#mpd {
+    color: #ffffff;
+}
+
+/* =========================
+   Keyboard / Language
+   ========================= */
+#language {
+    color: #740864;
+    padding: 0 5px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state {
+    color: #ffffff;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state > label {
+    padding: 0 5px;
+}
+
+/* =========================
+   Scratchpad / Privacy
+   ========================= */
+#scratchpad {
+    background: transparent;
+}
+
+#privacy {
+    padding: 0;
+}
+
+#privacy-item {
+    padding: 0 5px;
+    color: white;
+}
+
+/* =========================
+   Animations
+   ========================= */
+@keyframes darken {
+    to {
+        color: #383838;
+    }
+}
+
+@keyframes chargePlug {
+    to {
+        color: green;
+    }
+}

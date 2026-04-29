@@ -1,0 +1,362 @@
+[
+  /* =========================
+     Top Bar
+     ========================= */
+  {
+    "name": "topbar",
+    "position": "top",
+    // "width": 1300,
+    // "margin-top": 2,
+    // "margin-bottom": 2,
+
+    "modules-left": ["hyprland/workspaces","tray"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio","memory","battery","network","power-profiles-daemon"],
+
+    /* ---------- Workspaces ---------- */
+    "hyprland/workspaces": {
+      "format": "{}",
+      "format-icons": {
+        "1": "1",
+        "2": "2",
+        "3": "3",
+        "4": "4",
+        "5": "5",
+        "6": "6",
+        "7": "7",
+        "8": "8",
+        "active": "",
+        "default": ""
+      },
+      "persistent-workspaces": {
+        "*": 5,
+        "HDMI-A-1": 3
+      }
+    },
+    
+
+    /* ---------- Custom Modules ---------- */
+
+"wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 18,
+    "icon-theme": "Numix-Circle",
+    "on-click": "activate",
+    "all-outputs": false,
+    "ignore-list": [],
+    "sort-by-number": false, // KNOWN ISSUE: when reording applications it will not reload automatically, you must reload the waybar (mainMod shift + w)
+    "filter-policy": "all" 
+},
+
+
+    "custom/power": {
+      "format": "",
+      "tooltip": false,
+      "menu": "on-click",
+      "menu-file": "$HOME/.config/waybar/power_menu/power_menu.xml",
+      "menu-actions": {
+        "shutdown": "shutdown",
+        "reboot": "reboot",
+        "suspend": "systemctl suspend",
+        "hibernate": "systemctl hibernate"
+      }
+    },
+
+    "custom/swaync": {
+      "format": " {icon}",
+
+      "on-click": "exec swaync-client -t -sw"
+    },
+
+    "custom/spotify": {
+      "format": " 🎜 {} ",
+      "return-type": "json",
+      "interval": 1,
+      "exec": "playerctl -p spotify metadata --format '{\"text\": \"{{artist}} - {{title}}\", \"alt\": \"{{status}}\", \"tooltip\": \"{{title}} - {{artist}}\"}'",
+      "on-click": "playerctl -p spotify play-pause"
+    },
+
+    "custom/media": {
+      "format": "{icon} {text}",
+      "return-type": "json",
+      "max-length": 40,
+      "format-icons": {
+        "spotify": "",
+        "default": "🎜"
+      },
+      "escape": true,
+      "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null"
+    },
+    
+    /* ---------- System Modules ---------- */
+    "clock": {
+      "format": " {:%I:%M} ",
+      "tooltip-format": " {:%A, %B %d, %Y} ",
+      "format-alt": " {:%Y-%m-%d} "
+    },
+
+    
+
+    "battery": {
+      "states": {
+        "warning": 30,
+        "critical": 15
+      },
+      "format": " {icon}{capacity}% ",
+      "format-full": " {capacity}%",
+      "format-charging": " {capacity}%",
+      "format-plugged": " {capacity}%",
+      "format-alt": " {time} {icon} ",
+      "format-icons": [" ", " ", " ", " ", " "]
+    },
+
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+      }
+    },
+
+    "cpu": {
+      "format": "CPU {usage}% ",
+      "tooltip": false
+    },
+    "temperature": {
+      "critical-threshold": 80,
+      "format": "{temperatureC}°C {icon}",
+      "format-icons": ["", "", ""]
+    },
+
+    "backlight": {
+      "format": "{percent}% {icon}",
+      "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+
+    "idle_inhibitor": {
+      "format": "{icon}",
+      "format-icons": {
+        "activated": "",
+        "deactivated": ""
+      }
+    },
+
+    "keyboard-state": {
+      "numlock": true,
+      "capslock": true,
+      "format": "{name} {icon}",
+      "format-icons": {
+        "locked": "",
+        "unlocked": ""
+      }
+    },
+
+    "tray": {
+      "spacing": 5
+    },
+    
+    "memory": { "format": " {}%" },
+    "pulseaudio": {
+      "format": " {volume}%",
+      "format-muted": "",
+      "format-source": " {volume}% ",
+      "format-source-muted": "",
+      "format-icons": {
+        "default": ["", "", ""]
+      },
+      "on-click": "pavucontrol"
+    },
+    "network": {
+      "format-wifi": "^^",
+      "format-ethernet": "{ipaddr}/{cidr} 󰊗 ",
+      "tooltip-format": "{ifname} via {gwaddr} 󰊗 ",
+      "format-linked": "{ifname} (No IP) 󰊗 ",
+      "format-disconnected": "X_X ⚠",
+      "on-click": "exec nmrs"
+    }
+  },
+
+{
+  "name": "bottombar",
+    "position": "bottom",
+    // "width": 1300,
+    // "margin-top": 2,
+    // "margin-bottom": 2,
+
+    "modules-left": [],
+    "modules-center": [],
+    "modules-right": [],
+    /* ---------- Workspaces ---------- */
+    "hyprland/workspaces": {
+      "format": "{}",
+      "format-icons": {
+        "1": "1",
+        "2": "2",
+        "3": "3",
+        "4": "4",
+        "5": "5",
+        "6": "6",
+        "7": "7",
+        "8": "8",
+        "active": "",
+        "default": ""
+      },
+      "persistent-workspaces": {
+        "*": 5,
+        "HDMI-A-1": 3
+      }
+    },
+    
+
+    /* ---------- Custom Modules ---------- */
+
+"wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 18,
+    "icon-theme": "Numix-Circle",
+    "on-click": "activate",
+    "all-outputs": false,
+    "ignore-list": [],
+    // This setting ensures only windows on the current monitor/workspace show up
+    "filter-policy": "all" 
+},
+
+
+    "custom/power": {
+      "format": "",
+      "tooltip": false,
+      "menu": "on-click",
+      "menu-file": "$HOME/.config/waybar/power_menu/power_menu.xml",
+      "menu-actions": {
+        "shutdown": "shutdown",
+        "reboot": "reboot",
+        "suspend": "systemctl suspend",
+        "hibernate": "systemctl hibernate"
+      }
+    },
+
+    "custom/swaync": {
+      "format": " {icon}",
+
+      "on-click": "exec swaync-client -t -sw"
+    },
+
+    "custom/spotify": {
+      "format": " {} ",
+      "return-type": "json",
+      "interval": 1,
+      "exec": "playerctl -p spotify metadata --format '{\"text\": \"{{artist}} - {{title}}\", \"alt\": \"{{status}}\", \"tooltip\": \"{{title}} - {{artist}}\"}'",
+      "on-click": "playerctl -p spotify play-pause"
+    },
+
+    "custom/media": {
+      "format": "{icon} {text}",
+      "return-type": "json",
+      "max-length": 40,
+      "format-icons": {
+        "spotify": "",
+        "default": "🎜"
+      },
+      "escape": true,
+      "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null"
+    },
+    
+
+    /* ---------- System Modules ---------- */
+    "clock": {
+      "format": " {:%I:%M} ",
+      "tooltip-format": " {:%A, %B %d, %Y} ",
+      "format-alt": " {:%Y-%m-%d} "
+    },
+
+    
+
+    "battery": {
+      "states": {
+        "warning": 30,
+        "critical": 15
+      },
+      "format": " {icon}{capacity}% ",
+      "format-full": "  {capacity}% ",
+      "format-charging": "  {capacity}% ",
+      "format-plugged": "  {capacity}% ",
+      "format-alt": " {time} {icon} ",
+      "format-icons": [" ", " ", " ", " ", " "]
+    },
+
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+      }
+    },
+
+    "cpu": {
+      "format": "CPU {usage}% ",
+      "tooltip": false
+    },
+    "temperature": {
+      "critical-threshold": 80,
+      "format": "{temperatureC}°C {icon}",
+      "format-icons": ["", "", ""]
+    },
+
+    "backlight": {
+      "format": "{percent}% {icon}",
+      "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+
+    "idle_inhibitor": {
+      "format": "{icon}",
+      "format-icons": {
+        "activated": "",
+        "deactivated": ""
+      }
+    },
+
+    "keyboard-state": {
+      "numlock": true,
+      "capslock": true,
+      "format": "{name} {icon}",
+      "format-icons": {
+        "locked": "",
+        "unlocked": ""
+      }
+    },
+
+    "tray": {
+      "spacing": 5,
+         "icon-size": 18,
+    "show-passive-icons": true
+    },
+
+    "memory": { "format": " {}%" },
+    "pulseaudio": {
+      "format": " {volume}% ",
+      "format-muted": "",
+      "format-source": " {volume}% ",
+      "format-source-muted": "",
+      "format-icons": {
+        "default": ["", "", ""]
+      },
+      "on-click": "pavucontrol"
+    },
+    "network": {
+      "format-wifi": "^^",
+      "format-ethernet": "{ipaddr}/{cidr} 󰊗 ",
+      "tooltip-format": "{ifname} via {gwaddr} 󰊗 ",
+      "format-linked": "{ifname} (No IP) 󰊗 ",
+      "format-disconnected": "X_X ⚠",
+      "on-click": "exec kitty -e nmtui"
+    }
+  }
+    
+]
+
