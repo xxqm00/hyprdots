@@ -39,17 +39,17 @@
       }
    },
    "telemetry": {
-      "system_info": false
+      "system_info": true
    },
    "launcher_window": {
-      "opacity": 1,
+      "opacity": 2,
       "client_side_decorations": {
          "enabled": true,
          "rounding": 10,
-         "border_width": 1
+         "border_width": 2
       },
       "size": {
-         "width": 480,
+         "width": 500,
          "height": 480
       },
       "dim_around": true,
@@ -86,17 +86,17 @@
       "toggle-action-panel": "control+B"
    },
    "favorites": [
+      "applications:com.spotify.Client",
       "clipboard:history"
    ],
    "fallbacks": [
       "files:search"
    ],
    "providers": {
-      "@sovereign/store.vicinae.hypr-keybinds": {
-         "entrypoints": {
-            "hyprland-keybinds": {
-               "alias": "wp"
-            }
+      "@marcjulian/store.raycast.obsidian": {
+         "preferences": {
+            "configFileName": "k13",
+            "vaultPath": "/home/komari/Documents/Obsi/K13"
          }
       },
       "applications": {

@@ -1,264 +1,189 @@
-/* =========================
-   Global Settings
-   ========================= */
+@define-color bg-color rgba(55, 55, 55, 0.4);
+@define-color bg-cust rgba(10, 10, 10, 1);
+@define-color bg-alt rgba(197, 197, 197, 0.2);
+@define-color border-color transparent;
+@define-color selected-bg-color rgba(120, 120, 120, 0.5);
+@define-color selected-border-color #313244;
+@define-color text-color #ffffff;
+
 * {
-        font-family: "JetBrainsMono Nerd Font","Font Awesome", "Font Awesome 7 Free", "Font Awesome 7 Brands";
-    font-size: 15px;
-    font-weight: 700;
+    border: none;
+    border-radius: 10;
+    min-height: 16px;
+    font-family: "SF Pro Text", "Apple Color Emoji", "SF Pro Display", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
 }
 
-/* =========================
-   Waybar Base
-   ========================= */
-window#waybar,
-window#waybar.bottombar {
+window#waybar {
+    background: @bg-color;
+    /* border-radius: 10px; */
+    color: @text-color;
+}
+
+window.taskbar#waybar {
     background-color: transparent;
-        /* border-radius: 5px; */
-    padding: 5px;
-    /* background-color: rgba(10, 10, 10, 0.98); */
-    transition: background-color 0.5s;
+    border-radius: 0;
 }
 
-window#waybar.hidden {
-    opacity: 0.2;
-}
-
-/* Bottom bar specific tweaks */
-window#waybar.bottombar {
-    background-color: transparent;
-}
-
-/* Hide unused sections on bottom / top bar */
-window#waybar.bottombar .modules-center, 
-window#waybar.bottombar .modules-left, 
-window#waybar.bottombar .modules-right {
-    background-color: transparent;
-    border: transparent;
-
-}
-
-/* =========================
-   Module Containers
-   ========================= */
 .modules-left,
 .modules-center,
 .modules-right {
-    margin-left: 2px;
-    margin-right: 2px;
-    margin-top: 2px;
-    border-radius: 10px;
-    padding: 3px;
-    border: 2px solid rgba(0, 0, 0, 0.2);
-    background-color: #0e0e0e;
-}
-
-/* =========================
-   Buttons / Interactions
-   ========================= */
-button {
-    margin-left: 2px;
-    margin-right: 2px;
-    border: 1px solid #0b0b0b;
-}
-
-button:hover {
-        background-color: #212121;
-
-    /* box-shadow: 0 -3px transparent; */
-}
-
-/* =========================
-   Workspaces
-   ========================= */
-#workspaces {
+    margin: 0px 0px 0px;
+    padding: 4px 4px;
     background: transparent;
-    border-radius: 5px;
+    border: 0px;
+    box-shadow: none;
 }
 
-#workspaces button {
-    padding: 0 5px;
-    background: rgba(19, 19, 19, 0.6);
-    border-radius: 5px;
-}
-
-#workspaces button.active {
-    background-color: #1b1b1b;
-    border-color: #191919;
-    animation: darken 0.5s steps(9) infinite alternate;
-}
-
-#workspaces button.urgent {
-    color: red;
-}
-
-/* Remove extra spacing at edges */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
-}
-
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
-}
-
-#taskbar button {
-    padding: 0 5px;
-    border-bottom: 3px solid transparent;
-}
-
-#taskbar button.active {
-    background-color: rgba(139, 139, 139, 0.1);
-        border-radius: 5px;
-
-}
-
-#taskbar button:hover {
-    background-color: rgba(200, 200, 200, 0.1);
-    border-radius: 5px;
-}
-
-
-/* =========================
-   Shared Module Styling
-   ========================= */
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#wireplumber,
-#custom-media,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#mpd,
-#clock,
-#custom-spotify,
-#custom-power,
-#window,
-#taskbar,
-#power-profiles-daemon {
-    background-color: #171717;
-    border: 2px solid rgba(27, 27, 27, 0.7);
-    border-radius: 5px;
-    padding-top: 1px;
-    padding-bottom: 1px;
-    padding-left: 3px;
-    padding-right: 3px;
-    margin: 1px;
-}
-#workspaces{
+.modules-left:hover,
+.modules-center:hover,
+.modules-right:hover {
+    box-shadow: none;
     border-color: transparent;
 }
-#tray{
-    margin-left: 5px;
-    margin-right: 5px;
-    padding-left: 3px;
-    padding-right: 3px;
-    background-color: rgba(36, 36, 36, 0.6);
-    border: 2px solid rgba(27, 27, 27, 0.7);
-    border-radius: 5px;
+#workspaces,
+#window,
+#mpris,
+#pulseaudio,
+#network,
+#bluetooth,
+#language,
+#battery,
+#clock,
+#tray,
+#custom-notification,
+#custom-updates {
+    padding: 0 5px;
+    margin: 0 0px;
+    color: @text-color;
 }
 
-/* =========================
-   Battery
-   ========================= */
-/* #battery {
-    margin-right: 5px;
-} */
+#window {
+    color: @text-color;
+}
+
+#mpris {
+    color: @text-color;
+    padding: 2px 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+#mpris.playing {
+    color: @text-color;
+    background: transparent;
+}
+
+#mpris.paused {
+    color: @text-color;
+    background: transparent;
+}
+
+#mpris.stopped {
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    color: @text-color;
+}
+
+
+
+#workspaces button{
+    background: transparent;
+    padding: 0px;
+    border: none;
+        transition: all 0.3s ease; 
+
+}
+
+#workspaces button .taskbar-window.active {
+    border-bottom: 1px solid @text-color;
+    border-radius: 0px;
+}
+
+#language:hover,
+#clock:hover,
+#memory:hover,
+#tray:hover,
+#mpris:hover,
+#pulseaudio:hover,
+#network:hover,
+#bluetooth:hover,
+#battery:hover {
+    background-color: @selected-bg-color;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+#battery.warning {
+    color: #f9e2af;
+    background: transparent;
+}
+
+#battery.critical {
+    color: #f38ba8;
+    background: transparent;
+}
 
 #battery.charging,
 #battery.plugged {
-    animation: chargePlug 0.5s steps(10) 2 alternate;
-}
-
-#battery.critical:not(.charging) {
-    animation: blink 0.5s steps(12) infinite alternate;
-}
-
-/* =========================
-   Power Profiles
-   ========================= */
-#power-profiles-daemon.performance,
-#power-profiles-daemon.balanced,
-#power-profiles-daemon.power-saver {
-    color: #ffffff;
-}
-
-/* =========================
-   Tray
-   ========================= */
-#tray > .passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-}
-
-/* =========================
-   Idle Inhibitor
-   ========================= */
-#idle_inhibitor.activated {
-    color: #ffffff;
-}
-
-/* =========================
-   MPD
-   ========================= */
-#mpd {
-    color: #ffffff;
-}
-
-/* =========================
-   Keyboard / Language
-   ========================= */
-#language {
-    color: #740864;
-    padding: 0 5px;
-    margin: 0 5px;
-    min-width: 16px;
-}
-
-#keyboard-state {
-    color: #ffffff;
-    margin: 0 5px;
-    min-width: 16px;
-}
-
-#keyboard-state > label {
-    padding: 0 5px;
-}
-
-/* =========================
-   Scratchpad / Privacy
-   ========================= */
-#scratchpad {
+    color: #94e2d5;
     background: transparent;
 }
 
-#privacy {
-    padding: 0;
+#tray {
+    color: @text-color;
+    padding: 0 10px;
 }
 
-#privacy-item {
-    padding: 0 5px;
-    color: white;
+#custom-updates {
+    color: @text-color;
+    padding: 2px 10px;
+    border-radius: 5px;
+    background: transparent;
 }
 
-/* =========================
-   Animations
-   ========================= */
-@keyframes darken {
-    to {
-        color: #383838;
-    }
+#custom-updates:hover {
+    background-color: @selected-bg-color;
+    border-radius: 5px;
+    transition: all 0.3s ease;
 }
 
-@keyframes chargePlug {
-    to {
-        color: green;
-    }
+#custom-notification {
+    color: @text-color;
+    padding: 2px 10px;
+    border-radius: 5px;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+#custom-notification.has-notification {
+    color: #fcac00;
+    background: transparent;
+}
+
+#custom-notification.none {
+    color: #ffffff;
+    background: transparent;
+    box-shadow: none;
+}
+
+#custom-notification:hover {
+    background-color: @selected-bg-color;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+tooltip {
+    background: rgba(30, 30, 30, 0.85);
+    border: 1px solid #45475a;
+    border-radius: 5px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5),
+                0 0 1px rgba(137, 220, 235, 0.3),
+                inset 0 1px 0 rgba(205, 214, 244, 0.05);
+}
+
+tooltip label {
+    color: @text-color;
 }
