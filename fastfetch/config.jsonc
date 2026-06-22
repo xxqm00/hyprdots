@@ -1,168 +1,97 @@
 {
-     //"$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo": {
-        "source": "~/.config/fastfetch/arch.txt",
-        "type": "file",
-        "color": {
-      "1": "white",
-      "2": "white",
-      "3": "white",
-      "4": "white"
-    },
-        "padding": {
-            "top": 1,
-            "right": 0,
-            "left": 0
-        }
-    },
-
-    "display": {
-        "separator": " "
+    "type": "builtin",        // Logo type: auto, builtin, small, file, etc.
+    "source": "arch",      // Built-in logo name or file path
+    "width": 10,           // Width in characters
+    "height": 5          // Height in characters
+    	},
+"display": {
+        "separator": "  ",
+        "color": "white"
     },
     "modules": [
-
+         "break",
+           {
+            "type": "custom",
+            "key": "                         Welcome back, kie"
+        },
+        {
+            "type": "custom",
+            "key": "            ╭─────────────────────────────────────────╮"
+        },
         // {
         //     "type": "custom",
-        //     "format": "  ",
-        //     "outputColor": "white"
+        //     "key": "│                                         │"
         // },
-        // {
-        //     "type": "custom",
-        //     "format": "  ",
-        //     "outputColor": "white"
-        // },
-        {
-            "type": "custom",
-            "format": "  ",
-            "outputColor": "white"
+         {
+            "type": "os",
+            "key": "            │  OS           ",
+            "format": "{pretty-name>22}  │"
         },
         {
-            "type": "custom",
-            "format": "  ",
-            "outputColor": "white"
+            "type": "command",
+            "key": "            │  Kernel       ",
+            "text": "uname -r | cut -d '-' -f1",
+            "format": "{>22}  │"
         },
         {
-            "type": "custom",
-            "format": "───────────────────KOMARI────────────────────",
-            "outputColor": "white"
+            "type": "command",
+            "key": "            │  Uptime       ",
+            "text": "uptime -p | sed -E 's/up //; s/ days?/d/g; s/ hours?/h/g; s/ minutes?/m/g'",
+            "format": "{>22}  │"
         },
         {
-            "type": "custom",
-            "format": "     There are two kinds of faithfulness:",
-            "outputColor": "white"
+            "type": "shell",
+            "key": "            │  Shell        ",
+            "format": "{pretty-name>22}  │"
         },
         {
-            "type": "custom",
-            "format": "       keeping secrets and being honest.",
-            "outputColor": "white"
+            "type": "command",
+            "key": "            │  WM           ",
+            "text": "echo $XDG_CURRENT_DESKTOP",
+            "format": "{>22}  │"
         },
         {
-            "type": "custom",
-            "format": "             They cannot coexist.",
-            "outputColor": "white"
-        },
-        
-         
+	        "key": "            │  OS Age                      ",
+            "type": "disk",
+	        "folders": "/",
+	        "format": "{days} days   │"
+	    },
         {
-            "type": "title",
-            "outputColor": "white",
-            "format": " ──────────────────────────────────────────── "
+            "type": "command",
+            "key": "            │  Ram          ",
+            "text": "free -m | awk 'NR==2{printf \"%.2f / %.2f GiB\",$3/1024,$2/1024}'",
+            "format": "{>22}  │"
+        },
+        {
+            "type": "command",
+            "key": "            │  CPU          ",
+            "text": "lscpu | grep 'Model name' | sed -E 's/.*(i[0-9]-[0-9A-Za-z]+).*/\\1/'",
+            "format": "{>22}  │"
+        },
+        {
+            "type": "command",
+            "key": "            │  Disk         ",
+            "format": "{>22  │"
         },
 
-        
-        
         {
-            "type": "title",
-            "outputColor": "white",
-            "format": " ──────────────────────────────────────────── "
+            "type": "packages",
+            "key": "            │  Packages     ",
+            "format": "{all>22}  │"
         },
         // {
-        //     "type": "host",
-        //     "key": "  Host:",
-        //     "keyColor": "white",
-        //     "format": "{name}"
+        //     "type": "custom",
+        //     "key": "│                                         │"
         // },
         {
-            "type": "display",
-            "key": "󰹑 Display:",
-            "keyColor": "white",
-            "format": " {width}x{height} @ {refresh-rate}Hz {inch}″"
-            //{name} goes before {width}
-        },
-        // {
-        //     "type": "cpu",
-        //     "key": "󰻠 CPU:",
-        //     "keyColor": "white",
-        //     "format": "{name}"
-        // },
-        // {
-        //     "type": "gpu",
-        //     "key": "󰍛 GPU:",
-        //     "keyColor": "white",
-        //     "format": "{vendor} {name}"
-        // },
-        {
-            "type": "memory",
-            "key": "󰘚 RAM:",
-            "keyColor": "white"
+            "type": "custom",
+            "key": "            ╰─────────────────────────────────────────╯"
         },
         {
             "type": "disk",
-            "key": "󰋊 Disk:",
-            "keyColor": "white",
+            "key": "              ",
             "format": "{size-used} / {size-total} ({size-percentage}) {filesystem}"
-        },
-
-        
-
-        // {
-        //     "type": "custom",
-        //     "format": "\u001b[90m├────────────────────────────────────────────┤"
-        // },
-        // {
-        //     "type": "os",
-        //     "key": "󰌽 OS",
-        //     "keyColor": "white"
-        // },
-        // {
-        //     "type": "de",
-        //     "key": "│ DE",
-        //     "keyColor": "white"
-        // },
-        // {
-        //     "type": "wm",
-        //     "key": "│ WM",
-        //     "keyColor": "white"
-        // },
-        // {
-        //     "type": "kernel",
-        //     "key": "│ Kernel",
-        //     "keyColor": "white"
-        // },
-        // {
-        //     "type": "packages",
-        //     "key": "│󰏖 Packages",
-        //     "keyColor": "white"
-        // },
-        // {
-        //     "type": "shell",
-        //     "key": "│ Shell",
-        //     "keyColor": "white"
-        // },
-        // {
-        //     "type": "command",
-        //     "key": "│ Age",
-        //     "keyColor": "white",
-        //     "text": "echo $((($(date +%s) - $(stat -c %W /)) / 86400)) days"
-        // },
-        {
-            "type": "title",
-            "format": " ──────────────────────────────────────────── "
-        },
-                {
-            "type": "media",
-            "key": " └󰝚",
-            "keyColor": "white"
         }
     ]
 }
