@@ -5,10 +5,6 @@
 require("hyprbinds")
 require("hyprwindow")
 require("hyprstart")
-require("/dnc/submaps")
-require("/dnc/mediaNmouse")
-
-
 
 hl.env("XCURSOR_SIZE",        "24")
 hl.env("HYPRCURSOR_SIZE",     "24")

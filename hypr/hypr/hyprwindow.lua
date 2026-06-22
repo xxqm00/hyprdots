@@ -6,9 +6,9 @@
 hl.config({
     general = {
         gaps_in  = 5,
-        gaps_out = 10,
+        gaps_out = 15,
 
-        border_size = 2,
+        border_size = 0,
 
         col = {
             active_border   = { colors = {"rgba(000000ee)", "rgba(000000ee)"}, angle = 45 },
@@ -26,7 +26,7 @@ hl.config({
 
     decoration = {
         rounding       = 10,
-        rounding_power = 2,
+        rounding_power = 10,
 
         -- Change transparency of focused and unfocused windows
         active_opacity   = 1.0,
@@ -34,19 +34,16 @@ hl.config({
 
         shadow = {
             enabled      = true,
-            range        = 5,
-            render_power = 4,
-            scale        = 4,
+            range        = 4,
+            render_power = 10,
             color        = 0xee1a1a1a,
         },
 
-
         blur = {
-            enabled   = true,
+            enabled   = false,
             size      = 3,
             passes    = 1,
-            xray = false,
-            -- vibrancy  = 0.1696,
+            vibrancy  = 0.1696,
         },
     },
 
@@ -67,35 +64,30 @@ hl.curve("almostLinear",   { type = "bezier", points = { {0.5, 0.5},   {0.75, 1}
 hl.curve("quick",          { type = "bezier", points = { {0.15, 0},    {0.1, 1}     } })
 hl.curve( "overshoot", { type = "bezier", points = { {0.5, 0.9}, {0.1, 1.1} } } )
 
-hl.curve("easy",           { type = "spring", mass = 1, stiffness = 71.2633, dampening = 15})
+hl.curve("easy",           { type = "spring", mass = 1, stiffness = 71.2633, dampening = 15.8273644 })
 hl.curve( "rubber", { type = "spring", mass = 1, stiffness = 70, dampening = 10 } )
 hl.curve("menu", { type = "spring", mass = 1, stiffness = 80, dampening = 14 })
-hl.curve("window", { type = "spring", mass = 1, stiffness = 50, dampening = 15 })
+hl.curve("window", { type = "spring", mass = 1, stiffness = 30, dampening = 5 })
 hl.curve("open", {type="spring",mass=1,stiffness=30,dampening=5})
-hl.curve("workspace", { type = "spring", mass = 1, stiffness = 40, dampening = 15})
+hl.curve("workspace", { type = "spring", mass = 1, stiffness = 40, dampening = 8 })
 hl.curve("special", { type = "spring", mass = 1, stiffness = 30, dampening = 8 }) 
 
 hl.animation({ leaf = "global",        enabled = true,  speed = 10,   spring = "open" })
 hl.animation({ leaf = "border",        enabled = true,  speed = 5.39, bezier = "easeOutQuint" })
-
 hl.animation({ leaf = "windows",       enabled = true,  speed = 4.79, spring = "window" })
 hl.animation({ leaf = "windowsIn",     enabled = true,  speed = 4.1,  spring = "window", })
 hl.animation({ leaf = "windowsOut",    enabled = true,  speed = 1.49, spring = "window", })
-
 hl.animation({ leaf = "fadeIn",        enabled = true,  speed = 1.73, spring = "open" })
 hl.animation({ leaf = "fadeOut",       enabled = true,  speed = 1.46, spring = "open" })
 hl.animation({ leaf = "fade",          enabled = true,  speed = 3.03, bezier = "quick" })
-
 hl.animation({ leaf = "layers",        enabled = true,  speed = 3.81, bezier = "easeOutQuint" })
 hl.animation({ leaf = "layersIn",      enabled = true,  speed = 4,    spring = "open", style = "fade" })
-hl.animation({ leaf = "layersOut",     enabled = true,  speed = 4,  spring = "open",       style = "fade" })
+hl.animation({ leaf = "layersOut",     enabled = true,  speed = 1.5,  spring = "open",       style = "fade" })
 hl.animation({ leaf = "fadeLayersIn",  enabled = true,  speed = 1.79, spring = "window" })
 hl.animation({ leaf = "fadeLayersOut", enabled = true,  speed = 1.39, spring = "window" })
-
-hl.animation({ leaf = "workspaces",    enabled = true,  speed = 1.94, spring = "open", style = "slide" })
-hl.animation({ leaf = "workspacesIn",  enabled = true,  speed = 5, spring = "workspace", style = "slidevert" })
-hl.animation({ leaf = "workspacesOut", enabled = true,  speed = 5, spring = "workspace", style = "slidevert" })
-
+hl.animation({ leaf = "workspaces",    enabled = true,  speed = 1.94, spring = "open", style = "fade" })
+hl.animation({ leaf = "workspacesIn",  enabled = true,  speed = 5, spring = "workspace", style = "slide" })
+hl.animation({ leaf = "workspacesOut", enabled = true,  speed = 5, spring = "workspace", style = "slide" })
 hl.animation({ leaf = "zoomFactor",    enabled = true,  speed = 3,    bezier = "quick" })
 -- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 -- "Smart gaps" / "No gaps when only"
@@ -170,20 +162,16 @@ hl.window_rule({
 })
 
 hl.window_rule({
-    -- name  = "float-kitty",
-    match = { title = "kitty" },
+    name  = "float-terminal",
+    match = { title = "floating-term" },
     float = true,
-    pin = false,
-    opacity = "1",
-    move      = {300, 200},
-    focus_on_activate = true
+    move  = { "cursor_x-(window_w*0.5)", "cursor_y-(window_h*0.5)" }
 })
 
 hl.window_rule({
     match = { class = "de.manuel_kehl.go-for-it" },
     float = true,
-    move      = {1010, 42},
-    size = "330 700"   -- width height in pixels
+    size = "330 430"   -- width height in pixels
 })
 
 hl.window_rule({
@@ -192,6 +180,11 @@ hl.window_rule({
     size = "330 430"   -- width height in pixels
 })
 
+hl.window_rule({
+    name  = "float-win",
+    match = { title = "floating-window" },
+    float = true,
+})
 -- Layer rules also return a handle.
 -- local overlayLayerRule = hl.layer_rule({
 --     name  = "no-anim-overlay",
@@ -210,7 +203,7 @@ hl.window_rule({
 })
 -- hl.window_rule({ match = { class = "firefox" }, opacity = "0.90" })
 -- hl.window_rule({ match = { class = "legcord" }, opacity = "0.90" })
--- hl.window_rule({ match = { class = "codium" }, opacity = "0.95", blur = true })
+-- hl.window_rule({ match = { class = "codium" }, opacity = "0.90" })
 -- hl.window_rule({ match = { class = "obsidian" }, opacity = "0.90" })
 -- hl.window_rule({ match = { class = "kitty" }, opacity = "0.90" }) 
 
@@ -218,20 +211,14 @@ hl.window_rule({
   match        = { fullscreen = true },
   opacity = "1"
 })
--- hl.layer_rule({
---   match        = { namespace = "swaync-control-center" },
---   blur         = true,
---   ignore_alpha = 0,
--- })
+hl.layer_rule({
+  match        = { namespace = "swaync-control-center" },
+  blur         = true,
+  ignore_alpha = 0,
+})
 
--- hl.layer_rule({
---   match        = { namespace = "codium" },
---   opacity = "1"
---   blur         = true,
--- })
-
--- hl.layer_rule({
---   match        = { namespace = "swaync-notification-window" },
---   blur         = true,
---   ignore_alpha = 0,
--- })
+hl.layer_rule({
+  match        = { namespace = "swaync-notification-window" },
+  blur         = true,
+  ignore_alpha = 0,
+})
