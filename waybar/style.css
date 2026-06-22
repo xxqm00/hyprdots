@@ -1,4 +1,4 @@
-@define-color bg-color rgba(55, 55, 55, 0.4);
+@define-color bg-color rgba(10, 10, 10, 0.4);
 @define-color bg-cust rgba(10, 10, 10, 1);
 @define-color bg-alt rgba(197, 197, 197, 0.2);
 @define-color border-color transparent;
@@ -8,15 +8,23 @@
 
 * {
     border: none;
-    border-radius: 10;
+    /* border-radius: 12; */
     min-height: 16px;
-    font-family: "SF Pro Text", "Apple Color Emoji", "SF Pro Display", sans-serif;
-    font-size: 14px;
+    font-family: "SF Pro Rounded", "SF Compact", "Font Awesome 7 Brands", "Symbols Nerd Font Mono";
+    font-size: 15.7px;
     font-weight: 500;
 }
 
-window#waybar {
-    background: @bg-color;
+window#waybar.top {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.554), rgba(0, 0, 0, 0.003));
+    box-shadow: @bg-color;
+    /* border-radius: 10px; */
+    color: @text-color;
+}
+
+window#waybar.bottom {
+    background: transparent;
+    box-shadow: @bg-color;
     /* border-radius: 10px; */
     color: @text-color;
 }
@@ -26,15 +34,24 @@ window.taskbar#waybar {
     border-radius: 0;
 }
 
-.modules-left,
-.modules-center,
-.modules-right {
+window#waybar.top .modules-left,
+window#waybar.top .modules-center,
+window#waybar.top .modules-right {
     margin: 0px 0px 0px;
-    padding: 4px 4px;
+    padding: 5px 5px;
     background: transparent;
     border: 0px;
     box-shadow: none;
 }
+
+window#waybar.bottom .modules-center {
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: linear-gradient(180deg, rgba(161, 161, 161, 0.2), rgba(223, 223, 223, 0.2));
+    border-radius: 12px;
+    /* Smooth rounded corners */
+}
+
+
 
 .modules-left:hover,
 .modules-center:hover,
@@ -42,19 +59,29 @@ window.taskbar#waybar {
     box-shadow: none;
     border-color: transparent;
 }
+
 #workspaces,
 #window,
 #mpris,
-#pulseaudio,
-#network,
 #bluetooth,
 #language,
-#battery,
+#battery {
+    padding: 0 4px;
+    margin: 0 0px;
+    color: @text-color;
+}
+
+#pulseaudio,
+#network,
 #clock,
+#battery,
 #tray,
-#custom-notification,
-#custom-updates {
-    padding: 0 5px;
+#mpris,
+#spotify,
+#swaync,
+#custom-vicinae,
+#custom-notification {
+    padding: 0 6px;
     margin: 0 0px;
     color: @text-color;
 }
@@ -65,7 +92,7 @@ window.taskbar#waybar {
 
 #mpris {
     color: @text-color;
-    padding: 2px 10px;
+    padding: 2px 2px;
     border-radius: 5px;
     transition: all 0.3s ease;
 }
@@ -88,21 +115,39 @@ window.taskbar#waybar {
 }
 
 
-
-#workspaces button{
-    background: transparent;
-    padding: 0px;
-    border: none;
-        transition: all 0.3s ease; 
+#workspaces {
+    background: linear-gradient(180deg, rgba(168, 168, 168, 0.271), rgba(255, 255, 255, 0.271));
+    border-radius: 10px;
+    padding: 2px;
 
 }
 
-#workspaces button .taskbar-window.active {
-    border-bottom: 1px solid @text-color;
-    border-radius: 0px;
+#workspaces button {
+    padding: 2.5px;
+    margin: 0px;
+    /* border: 1px solid red; */
+    /* transition: all 0.3s ease;  */
+
 }
 
-#language:hover,
+/* #workspaces button.active {
+    background: linear-gradient(180deg, rgba(124, 117, 117, 0.333), rgba(91, 91, 91, 0.808));
+     border: 1px solid rgba(99, 99, 99, 0.741); 
+    border-radius: 5px;
+    padding-top:2.5px;
+    padding-bottom:2.5px;
+} */
+
+/* #workspaces button.hover {
+    background: linear-gradient(180deg, rgba(174, 174, 174, 0.333), rgba(56, 56, 56, 0.518));
+    border: 1px solid rgba(99, 99, 99, 0.741);
+    border-radius: 5px;
+    padding-top:2.5px;
+    padding-bottom:2.5px;
+    transition: all 0.3s ease;
+} */
+
+/* #language:hover,
 #clock:hover,
 #memory:hover,
 #tray:hover,
@@ -114,7 +159,7 @@ window.taskbar#waybar {
     background-color: @selected-bg-color;
     border-radius: 5px;
     transition: all 0.3s ease;
-}
+} */
 
 #battery.warning {
     color: #f9e2af;
@@ -151,9 +196,9 @@ window.taskbar#waybar {
 }
 
 #custom-notification {
-    color: @text-color;
+    /* color: @text-color; */
     padding: 2px 10px;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     background: transparent;
     transition: all 0.3s ease;
 }
@@ -180,8 +225,8 @@ tooltip {
     border: 1px solid #45475a;
     border-radius: 5px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5),
-                0 0 1px rgba(137, 220, 235, 0.3),
-                inset 0 1px 0 rgba(205, 214, 244, 0.05);
+        0 0 1px rgba(137, 220, 235, 0.3),
+        inset 0 1px 0 rgba(205, 214, 244, 0.05);
 }
 
 tooltip label {
