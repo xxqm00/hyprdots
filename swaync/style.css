@@ -1,6 +1,6 @@
-@define-color bg_base       #0e0e0e;
-@define-color bg_module     #171717;
-@define-color bg_active     #1b1b1b;
+@define-color bg_base       rgba(55, 55, 55, 0.4);
+@define-color bg_module     rgba(55, 55, 55, 0.4);
+@define-color bg_active     rgba(55, 55, 55, 0.4);
 @define-color bg_hover      #212121;
 @define-color border_strong     #0b0b0b;
 @define-color border_module     rgba(27, 27, 27, 0.7);
@@ -8,11 +8,11 @@
 @define-color fg_dim     #383838;
 @define-color fg_urgent  red;
 @define-color fg_charge  green;
-@define-color accent  #1b1b1b;
+@define-color accent  rgba(255, 255, 255, 0.4);
 
 * {
     outline: none;
-    font-family: "Segoe UI Variable Static Text";
+    font-family: "SF Pro Text", "Apple Color Emoji", "SF Pro Display", sans-serif;
     font-size: 18px;
     text-shadow: none;
     color: @fg_main;

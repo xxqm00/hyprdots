@@ -1,6 +1,6 @@
 {
     "$schema": "/etc/xdg/swaync/configSchema.json",
-    "positionX": "left",
+    "positionX": "right",
     "positionY": "center",
     "cssPriority": "user",
     
@@ -8,8 +8,8 @@
     "control-center-layer": "top",
     "layer-shell": true,
 
-    "control-center-width": 400,
-    "control-center-height": 650,
+    "control-center-width": 300,
+    "control-center-height": 550,
     "control-center-margin-top": 10,
     "control-center-margin-bottom": 10,
     "control-center-margin-right": 10,
@@ -41,12 +41,11 @@
     },
     "widgets": [
         "buttons-grid",
-        "mpris",
-        "volume",
-        "backlight",
-        "dnd",
         "title",
-        "notifications"
+        "notifications",
+        "dnd",
+        "volume",
+        "backlight"
     ],
     "widget-config": {
         "mpris": {
@@ -94,14 +93,8 @@
                     "active": false,
                     "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && pactl set-source-mute @DEFAULT_SOURCE@ 1 || pactl set-source-mute @DEFAULT_SOURCE@ 0'",
                     "update-command": "sh -c '[[ $(pactl get-source-mute @DEFAULT_SOURCE@) == *yes* ]] && echo true || echo false'"
-                },
-                {
-                    "label": " ",
-                    "type": "toggle",
-                    "active": false,
-                    "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && pactl set-sink-mute @DEFAULT_SINK@ 1 || pactl set-sink-mute @DEFAULT_SINK@ 0'",
-                    "update-command": "sh -c '[[ $(pactl get-sink-mute @DEFAULT_SINK@) == *yes* ]] && echo true || echo false'"
                 }
+
             ]
         }
     }
