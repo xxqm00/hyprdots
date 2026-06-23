@@ -21,10 +21,3 @@ OR
 - Use the bash installer script to download the listed applications
 
 
-## Previews
-[Video preview on imgur](https://imgur.com/a/5aOPOyP)
-<img width="1366" height="42" alt="2026-05-30-164428_hyprshot" src="https://github.com/user-attachments/assets/147ded61-2bbe-4eaf-936e-8cf593de8315" />
-
-<img width="600" height="300" alt="screen with waybar and a terminal open for showcasing" src="https://github.com/user-attachments/assets/3ed2e07a-6eb1-4f8d-9611-73f6d14cf14c" />
-
-
