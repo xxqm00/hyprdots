@@ -16,11 +16,9 @@ I made all of this using Arch Linux, so it may work for other versions / variant
 + spotify (flatpak version is configured, can be changed in binds)
 
 ### Installation
-+ Install yay before running this, and and install flatpak with yay
-1. `yay` (updating everything)
-2. `yay -S flatpak kitty firefox waypaper awww  vicinae thunar`
-3. `flatpak install spotify`
-4. clone or download this repository as a zip file, and drag the folders that you want into your .config folder
+- clone or download this repository as a zip file, and drag the folders that you want into your .config folder
+OR
+- Use the bash installer script to download the listed applications
 
 
 ## Previews
