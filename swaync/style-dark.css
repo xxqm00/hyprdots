@@ -1,11 +1,14 @@
 :root {
     --border-radius: 15px;
     --cc-bg: transparent;
-    --widget-background: rgba(10, 10, 10, 0.8);
+    --widget-background: rgba(46, 46, 46, 0.7);
     --noti-bg-alpha: 0.6;
     --padding: calc(var(--border-radius) / 2);
 }
 
+.widget-mpris .widget-mpris-player button {
+    display: none;
+}
 /* Kill GTK focus ring globally */
 * {
     outline: none;
@@ -14,9 +17,7 @@
 
 
 .control-center {
-    background: var(--widget-background);
-    border-radius: var(--border-radius);
-    border: var(--border);
+    border-radius: 0;
 }
 
 .widgets>.widget,
@@ -55,7 +56,7 @@
 }
 
 .widget-mpris>box>button:hover {
-    background: rgba(25, 25, 25, 1);
+    background: rgba(46, 46, 46, 1);
 }
 
 .widget-mpris-player {

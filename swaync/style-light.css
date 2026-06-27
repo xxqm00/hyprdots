@@ -1,11 +1,15 @@
 :root {
     --border-radius: 15px;
     --cc-bg: transparent;
-    --widget-background: rgba(10, 10, 10, 0.8);
+    --widget-background: rgba(220, 220, 220, 0.65);
     --noti-bg-alpha: 0.6;
     --padding: calc(var(--border-radius) / 2);
 }
 
+
+.widget-mpris .widget-mpris-player button {
+    display: none;
+}
 /* Kill GTK focus ring globally */
 * {
     outline: none;
@@ -14,9 +18,7 @@
 
 
 .control-center {
-    background: var(--widget-background);
-    border-radius: var(--border-radius);
-    border: var(--border);
+    border-radius: 0;
 }
 
 .widgets>.widget,
@@ -41,7 +43,7 @@
     background: var(--widget-background);
     border-radius: var(--border-radius);
     padding: calc(var(--border-radius) / 2);
-    color: white;
+    color:white;
     border: none;
 }
 
@@ -55,15 +57,60 @@
 }
 
 .widget-mpris>box>button:hover {
-    background: rgba(25, 25, 25, 1);
+    background: rgba(190, 190, 190, 1);
 }
 
 .widget-mpris-player {
+    color:white;
     box-shadow: none;
     border: var(--border);
     margin: 0 var(--padding);
 }
 
+.widget-mpris-player label, 
+.widget-mpris-player .title, 
+.widget-mpris-player .artist {
+    color: #ffffff;
+}
+.widget-mpris-player button * {
+    color: #ffffff;
+}
 .widget-mpris-player:only-child {
     margin: 0;
+}
+
+/* Light mode text */
+* {
+    color: #2a2a2a;
+}
+
+/* Notifications */
+.notification {
+    background: rgba(215, 215, 215, var(--noti-bg-alpha));
+    color: #2a2a2a;
+}
+
+.notification-content {
+    color: #2a2a2a;
+}
+
+.notification .summary {
+    color: #1a1a1a;
+}
+
+.notification .body {
+    color: #3a3a3a;
+}
+
+.close-button {
+    background: rgba(190, 190, 190, 0.8);
+    color: #2a2a2a;
+}
+
+.close-button:hover {
+    background: rgba(160, 160, 160, 1);
+}
+
+.notification-group-headers {
+    color: #2a2a2a;
 }
