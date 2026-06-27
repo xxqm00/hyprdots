@@ -1,5 +1,6 @@
+
 * {
-  font-family: "SF Pro","Font Awesome 7", monospace;
+  font-family: "SF Pro","Share Tech Mono", monospace;
   font-size: 11px;
   border: none;
   border-radius: 0;
@@ -8,15 +9,15 @@
 }
 
 window#waybar {
-  background: rgba(10, 10, 10, 0.92);
+  background: rgba(11, 10, 9, 0.92);
   border-bottom: 1px solid rgba(200, 184, 154, 0.15);
-  color: #ffffff;
+  color: #c8b89a;
 }
 
 /* WORKSPACES */
 #workspaces button {
   padding: 0 8px;
-  color: rgba(215, 215, 215, 0.3);
+  color: rgba(200, 184, 154, 0.3);
   border-bottom: 2px solid transparent;
   transition: all 0.15s;
 }
@@ -52,19 +53,14 @@ window#waybar {
 #pulseaudio,
 #clock,
 #custom-pomodoro,
-#network,
-#custom-notification,
-#power-profiles-daemon,
-#tray,
-#mpris,
-#custom-pomo {
+#custom-power {
   padding: 0 10px;
-  color: rgba(255, 255, 255, 0.824);
+  color: rgba(200, 184, 154, 0.5);
   border-left: 1px solid rgba(200, 184, 154, 0.08);
   letter-spacing: 1px;
 }
 
-/* #clock {
+#clock {
   color: #c8b89a;
   letter-spacing: 2px;
 }
@@ -83,18 +79,19 @@ window#waybar {
 
 #pulseaudio {
   color: #c8a860;
-} */
-/* 
-#custom-pomo {
+}
+
+#custom-pomodoro {
   color: rgba(200, 184, 154, 0.6);
   letter-spacing: 2px;
-} */
+}
 
-/* GROUP/ARCH DRAWER INNER MODULES */
-#arch #custom-arch-icon,
-#arch #memory,
-#arch #bluetooth,
-#arch #battery {
-  padding: 0 10px;
-  border-left: 1px solid rgba(200, 184, 154, 0.08);
+#custom-power {
+  color: rgba(200, 96, 96, 0.5);
+  padding: 0 14px;
+}
+
+#custom-power:hover {
+  color: #c87060;
+  background: rgba(200, 96, 96, 0.08);
 }
