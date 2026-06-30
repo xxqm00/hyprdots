@@ -1,3 +1,6 @@
+# Note:
+This is temporarlity not receiving any major updates, besides major configuration update changes, (i.e. hyprlands 0.54 > 0.55 .conf to .lua change)
+
 ## Requirements
 
 + Arch Linux system (Made on hyprland, 0.55)
